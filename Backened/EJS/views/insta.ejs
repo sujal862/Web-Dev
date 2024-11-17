@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css"> <!--bec insta.ejs ko public dir ki sari ki sari files available ha (bec index.js na static files serve kr diya ha ejs ko) so you not need to specify the full path of style.css (/public/style.css) -->
+</head>
+<body>
+
+    <!-- <h1>This page belongs to @<%# username %></h1>
+    <button>Follow</button>
+    <button>Message</button> -->
+
+    <!--Loop-->
+    <!-- <ul>
+        <%# for(let name of followers) { %>
+         <li><%# name %></li>
+        <%# } %>
+    </ul>
+     -->
+    
+
+
+    <!-- data.json -->
+    <h1>This page belongs to @<%= data.name %></h1>
+    <button>Follow</button>
+    <button>Message</button>
+
+    <p>Followers: <%= data.followers %> &nbsp;&nbsp;&nbsp;&nbsp; Following: <%= data.following %> </p>
+    <hr>
+
+    <% let x =1; %>
+    <% for(let posts of data.posts){ %> <!--posts is also a obj-->
+        <h2>post:<%=x%></h2>
+        <img src=<%= posts.image %>>
+        <p>Likes: <%= posts.likes %> &nbsp;&nbsp; comments: <%= posts.comments %></p>
+        <% x++; %>
+    <% } %>
+     
+    <%- include("includes/footer.ejs") %>
+
+    <script src="/script.js"></script>
+</body>
+</html>

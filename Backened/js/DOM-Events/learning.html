@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Name Input</title>
+</head>
+<body>
+    <h2 id="nameHeading">Enter your name</h2>
+    <input type="text" id="nameInput" placeholder="enter your name" oninput="updateHeading()">
+    
+    <script>
+        function updateHeading() {
+            const inputElement = document.getElementById('nameInput');
+            const headingElement = document.getElementById('nameHeading');
+            
+            // Regular expression to match only letters (a-z, A-Z) and space
+            const validCharsRegex = /^[a-zA-Z\s]*$/;
+            
+            // Filter out invalid characters
+            const validInput = inputElement.value.replace(validCharsRegex, '');
+            
+            // Update the heading with the valid input
+            headingElement.innerText = validInput;
+        }
+    </script>
+</body>
+</html>

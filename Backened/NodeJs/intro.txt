@@ -1,0 +1,14 @@
+Node.js :-
+not a programming lang, framework, library, technology
+it is js runtime environment
+js se backend nahi ban sakta 
+kyuki js ke pass wo functionalities nahi hai jinse backened banta hai
+ryan dahl isne socha js se backened banna chahiye
+google chrome ka v8 engine ka code open source hai and ryan dahl us code mein 
+chhedkhaani kar rah haikyuki chrome ka v8 engine bana hai c++ mein 
+fir usne socha ki humein to js mein code karna hai
+
+so ,  hum js ka code likhege jo ki wrapper layer of js receive karegi and wo code v8 engine
+ko c++ modules ka saath ek server create krega
+
+our js code -> node.js -> v8 engine(c++)
