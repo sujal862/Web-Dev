@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
-main()
+main()     //call main func -> if connection bn gya go for then ele catch
 .then(() => {
     console.log('MongoDB Connected…')
 })
 .catch(err => console.log(err));
 
-async function main() {
+async function main() {   //main func ka andr connection bna rha 
   await mongoose.connect('mongodb://127.0.0.1:27017/test');  //here dbs=test -> connecting with test dbs
 }
 
@@ -17,10 +17,9 @@ const userSchema = new mongoose.Schema({  //defines overall structure of each do
 });
 
 const User = mongoose.model('User', userSchema); //model(class) creation(name of collection is defined and schema is given)
- 
 
 /*
-//Inseting One document to collection
+//Inseting One document to collection is done like this (bec insetOne mathod dosent exist)
 const user1 = new User({  //similar to class use
   name:"Adam",
   email:"adam@yahoo.in",
@@ -91,8 +90,8 @@ User.insertMany([
 //     console.log(err);
 //   })
 
-//find and update
-// User.findOneAndUpdate({ name: "bruce"}, { age:49 }, {new:true} )
+//find and update  //first find the document(i.e displays the doc) and then update it
+// User.findOneAndUpdate({ name: "bruce"}, { age:49 }, {new:true} )  //option-> new:true -> is used to return the updated document
 //   .then((res)=>{
 //     console.log(res);
 //   })

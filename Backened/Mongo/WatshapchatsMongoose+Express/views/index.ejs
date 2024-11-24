@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Watshap</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body class="ml-5">
+    <h1 class="text-3xl text-center ">All Chats!</h1>
+    <form method="get" action="/chats/new">
+        <button class="bg-black mb-3 text-white px-4 py-2 rounded hover:bg-gray-800">New Chat</button>
+    </form>
+    <% for (let chat of chats) { %>
+        <div class="w-1/4 bg-blue-100 p-7 rounded-md inline-block">
+            <p>From: <i> <%= chat.from %></p></i>
+            <div class="bg-blue-500 text-white p-2 rounded-sm">
+                <p>Message: <%= chat.msg %></p>
+                <div class="mt-4 flex gap-x-4">
+                    <form method="get" action="/chats/<%= chat._id%>/edit">
+                        <button class="bg-white mb-3 text-black px-1  border-black">Edit</button>
+                    </form>
+                    <form method="post" action="/chats/<%= chat._id%>?_method=DELETE">
+                        <button class="bg-white mb-3 text-black px-1  border-black hover:bg-red-600">Delete</button>
+                    </form>
+                </div>
+               
+            </div>
+            <p>To: <i> <%= chat.to %> </i></p>
+            <p><%=chat.created_at.toString().split(" ").splice(0,4).join(" ")%></p>
+            <hr />
+        </div>
+       <br /> <br />
+    <% } %>
+    <script src="/js/script.js"></script>
+</body>
+
+</html>
