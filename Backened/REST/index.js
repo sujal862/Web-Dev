@@ -2,10 +2,10 @@ const express = require('express');
 const app = express();
 const port = 8080;
 const path = require('path');
-var methodOverride = require('method-override')
+var methodOverride = require('method-override') //helps to override POST method with PATCH method and DELETE method
 const {v4 : uuidv4} = require('uuid'); //uuidv4 is a func which will return a unique id
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true}));  //parsing the form data (at submit) into a JavaScript object that you can easily work with.
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -45,7 +45,7 @@ app.get('/posts/new', (req,res)=>{
 app.post('/posts', (req,res) =>{
     let id = uuidv4();
     let {username, content} = req.body;
-    posts.push({id, username, content});
+    posts.push({id, username, content});   //or u can write   posts.push({id, ...req.body});
     res.redirect('/posts');  
 })
 
@@ -67,7 +67,7 @@ app.get('/posts/:id/edit', (req,res)=>{
 app.patch('/posts/:id', (req,res)=>{
     let {id} = req.params;
     let post = posts.find((p) => id===p.id );
-    let newContent = req.body.content;
+    let newContent = req.body.content;   //req.body gives the data of form  after urlencoded(converted to js obj) (either post/patch) request
     post.content = newContent;
     res.redirect('/posts');
 })

@@ -24,4 +24,4 @@ const chatSchema = new moongose.Schema({
 
 const Chat = moongose.model('Chat', chatSchema);
 
-module.exports = Chat;
+module.exports = Chat;  //exported model
